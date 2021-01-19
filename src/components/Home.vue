@@ -23,6 +23,9 @@
           Source code can be seen by clicking the button in the right upper corner or
           <a href="https://github.com/Mahamurahti/Reaktor-Assignment-2021" target="_blank">here</a>.
         </p>
+        <p>
+          Made by <a href="https://erickeranen.muuta.net/" target="_blank">Eric Keränen</a>
+        </p>
       </div>
       <div v-if="loading" class="loading">
         <img src="../assets/loading.svg"
