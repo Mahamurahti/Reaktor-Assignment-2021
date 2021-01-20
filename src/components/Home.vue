@@ -62,7 +62,6 @@ export default {
     printProduct(emit) {
       this.products = JSON.parse(emit.contents);
       this.entry = false;
-      console.log(this.products)
     },
     loadingScreen(emit){ this.loading = emit; },
     updateHead(emit){ this.heading = emit; },

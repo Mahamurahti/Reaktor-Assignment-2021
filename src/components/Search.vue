@@ -36,7 +36,6 @@ export default {
   },
   methods: {
     async checkAvailability(manufacturer, id) {
-      console.log('checking availability')
       this.searching = true;
       let url = `https://api.allorigins.win/get?url=https://bad-api-assignment.reaktor.com/v2/availability/${manufacturer}`;
       await axios.get(url)
@@ -52,7 +51,6 @@ export default {
               this.failed = true;
             }
           })
-          .then(function () {console.log('done')})
           .catch(err => {
             this.failed = true;
             console.error(err)
