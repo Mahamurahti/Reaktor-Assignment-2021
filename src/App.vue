@@ -10,6 +10,7 @@ import Home from "@/components/Home";
 export default {
   name: 'App',
   components: {
+    // This site is an SPA that only displays one element which contains all the other elements
     Home
   }
 }

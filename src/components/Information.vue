@@ -23,6 +23,8 @@ export default {
     Search
   },
   props: {
+    // This is the product the Home component passes in the v-for loop which
+    // will be further passed down for the Search component
     product: Object
   }
 }

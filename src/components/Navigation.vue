@@ -24,55 +24,69 @@ export default {
     }
   },
   methods: {
+    // It would lessen code quite much if the emits were in one functions, that every async function calls,
+    // but for some reason it doesn't work and Home component displays an error every time...
+
+    // Get the data of gloves from the api
     async getGloves() {
       this.$emit('product:load', true);
       let url = 'https://api.allorigins.win/get?url=https://bad-api-assignment.reaktor.com/v2/products/gloves';
       await axios.get(url)
           .then(data => {
+            // Update main page with correct data
             this.$emit('product:call', data.data)
             this.$emit('product:head', 'Gloves')
             this.$emit('product:load', false);
           })
           .catch(err => {
+            // Display the error message on the main page
             console.error(err)
             this.$emit('product:call', '')
             this.$emit('product:head', err)
             this.$emit('product:load', false);
           })
     },
+    // Get the data of beanies from the api
     async getBeanies() {
       this.$emit('product:load', true);
       let url = 'https://api.allorigins.win/get?url=https://bad-api-assignment.reaktor.com/v2/products/beanies';
       await axios.get(url)
           .then(data => {
+            // Update main page with correct data
             this.$emit('product:call', data.data)
             this.$emit('product:head', 'Beanies')
             this.$emit('product:load', false);
           })
           .catch(err => {
+            // Display the error message on the main page
             console.error(err)
             this.$emit('product:call', '')
             this.$emit('product:head', err)
             this.$emit('product:load', false);
           })
     },
+    // Get the data of facemasks from the api
     async getFacemasks() {
       this.$emit('product:load', true);
       let url = 'https://api.allorigins.win/get?url=https://bad-api-assignment.reaktor.com/v2/products/facemasks';
       await axios.get(url)
           .then(data => {
+            // Update main page with correct data
             this.$emit('product:call', data.data)
             this.$emit('product:head', 'Facemasks')
             this.$emit('product:load', false);
           })
           .catch(err => {
+            // Display the error message on the main page
             console.error(err)
             this.$emit('product:call', '')
             this.$emit('product:head', err)
             this.$emit('product:load', false);
           })
     },
+    // LOad the content of the 'Entry page'
     loadEntryContent(){ this.$emit('content:entry', true) },
+    // Open source code on GitHub
     toSourceCode(){
       window.open('https://github.com/Mahamurahti/Reaktor-Assignment-2021', '_blank');
     },

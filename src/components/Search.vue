@@ -24,17 +24,20 @@ import axios from "axios";
 export default {
   name: "Search",
   props: {
+    // The product which is passed down from the Information component
     element: Object
   },
   data() {
     return {
       result: String,
+      // These three variables are for displaying different info on the right upper corner of the Information component
       searching: false,
       complete: false,
       failed: false
     }
   },
   methods: {
+    // Get the availability data of a product
     async checkAvailability(manufacturer, id) {
       this.searching = true;
       let url = `https://api.allorigins.win/get?url=https://bad-api-assignment.reaktor.com/v2/availability/${manufacturer}`;
@@ -43,7 +46,9 @@ export default {
             data = JSON.parse(data.data.contents);
             this.searching = false;
             try{
+              // Find the index of the correct product
               let index = data.response.findIndex(element => element.id === id)
+              // Format the product availability info
               this.result = this.formatDatapayload(data.response[index].DATAPAYLOAD);
               this.complete = true;
             }catch (err){
@@ -56,6 +61,7 @@ export default {
             console.error(err)
           })
     },
+    // Format the information the api retrieves: delete first 50 characters and the last 30 characters
     formatDatapayload(data){
       let format = data.split("");
       format.splice(0, 50)

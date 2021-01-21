@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- Catch emits from the Navigation component -->
     <Navigation @product:call="printProduct"
                 @product:load="loadingScreen"
                 @product:head="updateHead"
@@ -8,6 +9,7 @@
       <h1>{{ this.heading }} <span v-if="!entry">({{ products.length }})</span></h1>
       <ul v-if="!entry">
         <li v-for="element in products" :key="element.id">
+          <!-- Pass down every product in the category into separate Information components -->
           <Information :product="element" />
         </li>
       </ul>
@@ -52,6 +54,7 @@ export default {
   },
   data() {
     return {
+      // Store all the products and pass them into separate Information components
       products: Array,
       heading: 'Welcome!',
       loading: false,
@@ -59,16 +62,21 @@ export default {
     }
   },
   methods: {
+    // Grab the product information passed down from Navigation
     printProduct(emit) {
       this.products = JSON.parse(emit.contents);
       this.entry = false;
     },
+    // Display loading screen
     loadingScreen(emit){ this.loading = emit; },
+    // Update Heading of the page
     updateHead(emit){ this.heading = emit; },
+    // Load the data of the "Entry page"
     loadEntry(emit){
       this.entry = emit;
       this.heading = 'Welcome!';
     },
+    // Scroll to the top of the site instantly
     scrollToTop(){ document.documentElement.scrollTop = 0; }
   }
 }
